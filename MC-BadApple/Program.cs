@@ -8,7 +8,7 @@ ushort port = 25575; // RCONのポート番号
 string pswd = "minecraft"; // RCONのパスワード
 MinecraftCommands command = new MinecraftCommands(address, port, pswd);
 
-string videoPath = "/Users/potesala/badapple-48x.mp4"; // 再生する動画のパス
+string videoPath = "C:\\Users\\7f7fn\\badapple_48x36.mp4"; // 再生する動画のパス
 
 command.SetSubTitle("feat. nomico");
 command.DisplayTitle("Bad Apple!!");

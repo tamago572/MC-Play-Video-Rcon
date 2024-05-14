@@ -8,7 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MinecraftConnection" Version="2.1.0" />
-    <PackageReference Include="OpenCV" Version="2.4.11" />
     <PackageReference Include="OpenCvSharp4" Version="4.9.0.20240103" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.9.0.20240103" />
   </ItemGroup>
 </Project>
