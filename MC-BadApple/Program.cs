@@ -26,6 +26,7 @@ using(var capture = new VideoCapture(videoPath))
         Console.WriteLine("動画ファイルが開けませんでした");
         return;
     }
+
     var img = new Mat();
 
     int width = capture.FrameWidth;
@@ -46,7 +47,8 @@ using(var capture = new VideoCapture(videoPath))
         if (capture.Read(img))
         {
             //Cv2.ImShow("Bad Apple!!", img);
-
+            // 左右反転
+            Cv2.Flip(img, img, FlipMode.Y);
             
             // 画像からピクセルごとの色を取得
             for (int y = 0; y < height; y++)
@@ -61,10 +63,10 @@ using(var capture = new VideoCapture(videoPath))
                     // ブロックの色を設定
                     if (r < 32)
                     {
-                        command.SetBlock((int)pos.X-height/2+x, (int)pos.Y + height/2 - y, (int)pos.Z+20 , "black_concrete");
+                        command.SetBlock((int)pos.X-width/2+x, (int)pos.Y + height/2 - y, (int)pos.Z+20 , "black_concrete");
                     } else
                     {
-                        command.SetBlock((int)pos.X-height/2+x, (int)pos.Y+height/2 - y, (int)pos.Z+20, "white_concrete");
+                        command.SetBlock((int)pos.X-width/2+x, (int)pos.Y+height/2 - y, (int)pos.Z+20, "white_concrete");
                     }
                 }
             }
@@ -72,6 +74,7 @@ using(var capture = new VideoCapture(videoPath))
             Cv2.WaitKey(1000 / 8); // 1フレームあたりの時間 (30fps)
 
         } else {
+            command.DisplayMessage("Complete!!!");
             break; // 動画の最後まで再生したら終了 (フレームが空のため終了する)
         }
     }
